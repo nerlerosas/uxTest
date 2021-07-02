@@ -1,0 +1,43 @@
+.title{
+    color: #17304c;
+}
+.row-table{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+.row-table{
+    padding-top: 30px;
+    height: 30px;
+}
+.table>:not(:last-child)>:last-child>*{
+    border-bottom-color: aliceblue !important;
+}
+.confirmed, .on-hold, .blocked{
+    border-radius: 3px;
+}
+.confirmed{
+    background-color: #7ac844;
+    color: #7ac844;
+    margin-right: 10px;
+}
+.on-hold{
+    background-color: #fbb03b;
+    color: #fbb03b;
+    margin-right: 10px;
+}
+.blocked{
+    background-color: #ee3d42;
+    color:#ee3d42;
+    margin-right: 10px;
+}
+#table {
+    border-collapse: separate;
+    border-spacing: 2px 15px;
+}
+#table th {
+    font-size: 15px;
+}
+
+.table>:not(caption)>*>* {
+    padding: 1.0rem 1.0rem;
+}

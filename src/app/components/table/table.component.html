@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row pt-3 pb-3">
+        <div class="col-12">
+            <h2 class="title"> Orders </h2>
+        </div>
+    </div>
+
+    <app-filters></app-filters>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+
+            <app-loading *ngIf="loading"></app-loading>
+
+            <div class="table-responsive w-100"  *ngIf="!loading">
+                <table class="table w-100" id="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Purchase Order</th>
+                            <th scope="col">Product Line</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Date Submitted</th>
+                            <th scope="col">Date Request</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-table mt-5 mb-5" *ngFor="let row of data">
+                            <td [ngSwitch]="row.status"> 
+                                <i class="confirmed" *ngSwitchCase="'Confirmed'">
+                                    asd
+                                </i>
+                                <i class="on-hold" *ngSwitchCase="'On Hold'">
+                                    asd
+                                </i>
+                                <i class="blocked" *ngSwitchDefault>
+                                    asd
+                                </i>
+                                {{ row.status }} 
+                            </td>
+                            <td> {{ row.order }} </td>
+                            <td> {{ row.purcharseOrder }} </td>
+                            <td> {{ row.productLine }} </td>
+                            <td> {{ row.quantity }} </td>
+                            <td> {{ row.dateSubited }} </td>
+                            <td> {{ row.dateRequest }} </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+
+</div>

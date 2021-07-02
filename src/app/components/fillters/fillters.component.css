@@ -1,0 +1,22 @@
+.filters-body{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+.filters-body label .sean{
+    color: #3fa9f5;
+}
+.sean{
+    color: #3fa9f5;
+}
+.filter-container{
+    padding: 20px;
+    height: 100%;
+    vertical-align:middle;
+}
+.input-group-text{
+    background-color: white;
+    border-left-style: none;
+}
+.more-filter-label{
+    margin-left: 10px;
+}
