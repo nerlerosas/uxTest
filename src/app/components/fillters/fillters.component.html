@@ -2,24 +2,27 @@
     <div class="col-md-2 border-end"> 
         <span class="border-right"></span>
         <div class="filter-container ">
-            <label> Jobsites </label> 
-            <select class="form-select" id="autoSizingSelect">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>  
+            <p> Jobsites </p> 
+            <mat-form-field class="select-job-site w-100">
+                <mat-select  >
+                  <mat-option value="red">Red</mat-option>
+                  <mat-option value="green">Green</mat-option>
+                  <mat-option value="blue">Blue</mat-option>
+                </mat-select>
+            </mat-form-field>
+
         </div> 
     </div>
     <div class="col-md-5 border-end "> 
         <div class="filter-container">
             <label> My Data Views </label> 
-            <select class="form-select" id="autoSizingSelect">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+            <mat-form-field class="select-job-site w-100">                
+                <mat-select  >
+                  <mat-option value="red">Red</mat-option>
+                  <mat-option value="green">Green</mat-option>
+                  <mat-option value="blue">Blue</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div> 
     </div>
     <div class="col-md-3 border-end d-flex"> 
@@ -31,8 +34,108 @@
         </div> 
     </div>
     <div class="col-md-2"> 
-        <div class="filter-container mt-3 mb-3">
-            <i class="fa fa-tasks sean" aria-hidden="true"></i> <label class="sean more-filter-label"> More filtes </label> 
+        <div class="filter-container mt-4 mb-3">
+             <a (click)="openModal(modalMessage)">  <i class="fa fa-tasks sean" aria-hidden="true"></i> <label class="sean more-filter-label"> More filtes </label> </a>
         </div> 
     </div>
 </div>
+
+<ng-template #modalMessage let-modal>
+    <div class="modal-header mt-3">
+        <h4 class="modal-title">
+             Order Filters 
+        </h4>
+        <a type="button"  (click)="modal.dismiss('Cross click')">
+            <span class="span-close" > X </span>
+        </a>
+    </div>
+    <hr class=" pl-3 pr-3 hr-underline">
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Jobsites</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option *ngFor="let item of jobSites" value="{{item}}"> {{ item }} </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Product Line</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option *ngFor="let item of productLine" value="{{item}}">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Statuses</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option *ngFor="let item of statusOrder" value="{{item}}"> {{ item }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <button (click)="minusQuantity()" class="btn btn-outline-secondary" type="button" id="button-addon1"> - </button>
+                            </div>
+                            <input disabled [(ngModel)]="quantity" name="quantity" type="text" class="form-control text-center input-quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <div class="input-group-append">
+                                <button (click)="addQuantity()" class="btn btn-outline-secondary" type="button" id="button-addon2"> + </button>
+                              </div>
+                          </div>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Order Number</label>
+                        <input type="text" class="form-control" id="orderNumber" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Purchase Order</label>
+                        <input type="text" class="form-control" id="purchaseOrder" >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Save filtering criteria as  <b>Data View </b> 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <span class="sean"> Clear All Filters</span>
+                </div>
+                <div class="col-md-6 d-flex flex-row-reverse">
+                    <!-- <button type="button" class="btn-save-filters" (click)="modal.close('Save click')"> Apply Filters </button> -->
+                    <button type="button" class="btn-save-filters" (click)="closeModal()"> Apply Filters </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-template>   

@@ -5,9 +5,6 @@
 .filters-body label .sean{
     color: #3fa9f5;
 }
-.sean{
-    color: #3fa9f5;
-}
 .filter-container{
     padding: 20px;
     height: 100%;
@@ -19,4 +16,64 @@
 }
 .more-filter-label{
     margin-left: 10px;
+}
+
+.select-job-site{
+    background-color: white;
+    border-bottom: white;
+}
+p {
+    margin: 0 0 0px;
+}
+
+.mat-form-field-infix {
+    border-top: 0em solid transparent !important;
+}
+
+.modal-header{
+    border-bottom: 0px;
+}
+.span-close{
+    font-size: 24px;
+    text-decoration: none;
+    color: #0d6efd;
+    margin-right: 25px;
+}
+.modal-title{
+    color: #17304c;
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 3%;
+}
+.modal-footer{
+    border-top: 0;
+    margin-top: 60px;
+}
+.hr-underline{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -18px;
+}
+
+.btn-save-filters{
+    background-color: #7ac844;
+    border: none;
+    padding: 5px 20px;
+    color: white;
+}
+.btn-save-filters:hover{
+    background-color: #9ab18b;
+    color: black;
+}
+
+.btn-outline-secondary{
+    color: #0d6efd;
+    border-color: grey;
+}
+.input-quantity{
+    background-color: white;
+}
+
+.btn-outline-secondary:hover{
+    background-color: white;
 }
