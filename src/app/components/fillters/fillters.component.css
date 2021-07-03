@@ -6,7 +6,7 @@
     color: #3fa9f5;
 }
 .filter-container{
-    padding: 20px;
+    padding: 15px;
     height: 100%;
     vertical-align:middle;
 }
@@ -16,6 +16,10 @@
 }
 .more-filter-label{
     margin-left: 10px;
+    cursor: pointer;
+}
+.more-filter-label:hover{
+    color: #3fa9f5;
 }
 
 .select-job-site{
@@ -76,4 +80,8 @@ p {
 
 .btn-outline-secondary:hover{
     background-color: white;
+}
+.more-filters-click:hover{
+    cursor: pointer;
+    color: #3fa9f5;
 }
