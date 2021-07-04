@@ -85,3 +85,19 @@ p {
     cursor: pointer;
     color: #3fa9f5;
 }
+
+.option-selected{
+    background-color: #e7eaee;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.close-filter-selected{
+    text-decoration: none;
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.filtered-visible{
+    display: block;
+}

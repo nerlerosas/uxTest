@@ -22,7 +22,7 @@ export class TableComponent implements OnInit, OnDestroy {
         this.data = response;
         this.loading = false;
        })
-    }, 1000);
+    }, 2000);
   }
 
   ngOnDestroy(): void {

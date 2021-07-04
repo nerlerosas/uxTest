@@ -40,6 +40,22 @@
     </div>
 </div>
 
+<!-- Filters selected -->
+<div class="row filters-body border-right border-top pt-2 pb-2" *ngIf="filtered" >
+    <div class="col-md-8 p-3">
+        <span *ngIf="filters.status != ''" class="option-selected pr-2 mr-2">Status: {{ filters.status }} <a (click)="emptyFilter('status')" class="pl-2 cian close-filter-selected"> X </a> </span> 
+        <span *ngIf="filters.productLine != ''" class="option-selected pr-2 mr-2" > Product Line: {{ filters.productLine }} <a (click)="emptyFilter('productLine')" class="cian pl-2 close-filter-selected"> X </a> </span>
+        <span *ngIf="filters.jobsite != ''" class="option-selected pr-2 mr-2" > Jobsite: {{ filters.jobsite }} <a (click)="emptyFilter('jobsite')" class="cian pl-2 close-filter-selected"> X </a> </span>
+        <span *ngIf="filters.quantity > 0" class="option-selected pr-2 mr-2" > Quantity: {{ filters.quantity }} <a (click)="emptyFilter('quantity')" class="cian pl-2 close-filter-selected"> X </a> </span>
+    </div>
+    <div class="col-md-4 p-3 d-flex flex-row-reverse">
+        <span (click)="clearFilter()" class="cian close-filter-selected">Clear All Filters</span>
+    </div>
+</div>
+
+
+<!-- Modal... -->
+
 <ng-template #modalMessage let-modal>
     <div class="modal-header mt-3">
         <h4 class="modal-title">
@@ -57,7 +73,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Jobsites</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select [(ngModel)]="filters.jobsite" class="form-select" aria-label="Default select example">
                             <option *ngFor="let item of jobSites" value="{{item}}"> {{ item }} </option>
                         </select>
                     </div>
@@ -65,7 +81,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Product Line</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select [(ngModel)]="filters.productLine" class="form-select" aria-label="Default select example">
                             <option *ngFor="let item of productLine" value="{{item}}">{{item}}</option>
                         </select>
                     </div>
@@ -74,7 +90,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Statuses</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select [(ngModel)]="filters.status" class="form-select" aria-label="Default select example">
                             <option *ngFor="let item of statusOrder" value="{{item}}"> {{ item }}</option>
                         </select>
                     </div>
@@ -87,7 +103,7 @@
                             <div class="input-group-prepend">
                               <button (click)="minusQuantity()" class="btn btn-outline-secondary" type="button" id="button-addon1"> - </button>
                             </div>
-                            <input disabled [(ngModel)]="quantity" name="quantity" type="text" class="form-control text-center input-quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input disabled [(ngModel)]="filters.quantity" name="quantity" type="text" class="form-control text-center input-quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <div class="input-group-append">
                                 <button (click)="addQuantity()" class="btn btn-outline-secondary" type="button" id="button-addon2"> + </button>
                               </div>
@@ -128,11 +144,10 @@
             <hr>
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <span class="sean"> Clear All Filters</span>
+                    <span class="sean" ((click)="clearFilter()" > Clear All Filters</span>
                 </div>
                 <div class="col-md-6 d-flex flex-row-reverse">
-                    <!-- <button type="button" class="btn-save-filters" (click)="modal.close('Save click')"> Apply Filters </button> -->
-                    <button type="button" class="btn-save-filters" (click)="closeModal()"> Apply Filters </button>
+                    <button type="button" class="btn-save-filters" (click)="aplyFilters()"> Apply Filters </button>
                 </div>
             </div>
         </div>

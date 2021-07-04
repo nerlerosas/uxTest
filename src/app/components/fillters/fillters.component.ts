@@ -12,11 +12,24 @@ export class FilltersComponent implements OnInit {
 
   @ViewChild('modalMensaje') modal: ElementRef;
 
-  quantity : number = 0;
   statusOrder : string[] = [];
   productLine : string[] = [];
   jobSites : string[] = [];
+  filtered : boolean =  false;
+  
+  filters:any = {
+    quantity : 0,
+    status : '',
+    productLine : '',
+    jobsite : ''
+  }
 
+  // quantity : number = 0;
+  // statusSelected : string = '';
+  // productLineSelected : string = '';
+  // jobSiteSelected : string = '';
+  
+   
   constructor(private modalService: NgbModal, private _orderService :OrderService) { 
     this.statusOrder = this._orderService.getStatus();
     this.productLine = this._orderService.getProductLine();
@@ -30,19 +43,56 @@ export class FilltersComponent implements OnInit {
     this.modalService.open(modal, { size: 'lg'});
   }
 
-  closeModal() :void{
+  aplyFilters() :void{
+    this.checkFilters();
     this.modalService.dismissAll();
   }
 
+  clearFilter():void{
+    this.filtered = false;
+    this.filters.jobsite ='';
+    this.filters.status ='';
+    this.filters.productLine ='';
+  }
+  
   addQuantity() :void{
-    this.quantity++;
+    this.filters.quantity++;
   }
 
   minusQuantity() :void{
-    if(this.quantity == 0)
+    if(this.filters.quantity == 0)
       return;
 
-    this.quantity--;
+    this.filters.quantity--;
+  }
+
+  emptyFilter(filter) : void {
+    switch (filter) {
+      case 'status':
+          this.filters.status = '';
+        break;
+      case 'productLine':
+          this.filters.productLine = '';
+        break;
+      case 'jobsite':
+          this.filters.jobsite = '';
+        break;
+      case 'quantity':
+          this.filters.quantity = 0;
+        break;
+    
+      default:
+        break;
+    }
+    this.checkFilters();
+  }
+
+  checkFilters():void{
+    if(this.filters.productLine != '' || this.filters.status != '' || this.filters.jobsite != '' || this.filters.quantity > 0){
+      this.filtered = true;
+      //TODO:: aplicar el filtrado a los 
+    } else
+      this.filtered = false;
   }
 
 }
