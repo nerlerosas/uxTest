@@ -27,10 +27,7 @@ export class TableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.suscriber$ = this._orderService.getOrders(this.filters)
     .pipe( finalize( () => this.loading = false ))
-    .subscribe( response => {
-      console.log("RESPONSE:::", response)
-      this.data = response
-    });
+    .subscribe( response => this.data = response );
   }
 
   ngOnDestroy(): void {

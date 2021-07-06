@@ -42,11 +42,6 @@ export class OrderService {
       map( (registro) => {
         return  registro.filter( (r:any):any => {        
           return r;  
-          // return (r.status == filters.status && filters.status != "") 
-          // || (r.order.toString().includes(filters.orderId)) 
-          // || (r.productLine == filters.productLine )
-          // || (r.purcharseOrder.includes(filters.purcharseOrder))
-          // || (r.quantity == filters.quantity )
         })
       } )
       , delay(1000) );
