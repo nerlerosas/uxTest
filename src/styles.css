@@ -8,3 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .sean{
     color: #0d6efd;
 }
+
+.hover-efect{
+    cursor: pointer;
+}
