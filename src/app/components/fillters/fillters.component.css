@@ -115,3 +115,7 @@ p {
 .jobsitePaddingLeft{
     padding-left: 17px;
 }
+
+.add-new-dataview{
+    text-decoration: none;
+}

@@ -5,7 +5,7 @@
             <p> Jobsites </p> 
             <mat-form-field class="select-job-site w-100">
                 <mat-select (selectionChange)="setJobsiteSelected()" [(value)]="filtersPrincipal.jobSite" >
-                    <mat-option value="" > Default (Unfiltered) </mat-option>
+                    <mat-option value="" class="jobsitePaddingLeft"> Default (Unfiltered) </mat-option>
                     <mat-option *ngFor="let item of jobSites" [value]="item">
                         <div [ngClass]="{'jobsitePaddingLeft': item != filtersPrincipal.jobSite}" class="option-data-view-select-content">
                             <i [ngClass]="{'fa-check': item === filtersPrincipal.jobSite}" class="fa"></i> <span class="w-80" > {{item}} </span>
@@ -18,17 +18,20 @@
     </div>
     <div class="col-md-5 border-end "> 
         <div class="filter-container">
-            <label> My Data Views </label> 
-            <mat-form-field class="select-job-site w-100">
+            <p> My Data Views </p> 
+            <mat-form-field class="select-job-site w-80 mr-5">
                 <mat-select (selectionChange)="setFiltersSaved()" [(value)]="filtersPrincipal.myDataView">
                     <mat-option value="" > Default (Unfiltered) </mat-option>
                     <mat-option  *ngFor="let item of dataViews" [value]="item.name"> 
                         <div class="d-flex justify-content-between option-data-view-select-content">
-                            <span>  {{ item.name }} </span> <i (click)="trashDataView()" class="icon-trash mt-3 mb-3 fa fa-trash"></i>
+                            <span>  {{ item.name }} </span> <i (click)="trashDataView(item.name)" class="icon-trash mt-3 mb-3 fa fa-trash"></i>
                         </div>
                     </mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field> 
+            
+            <a (click)="newDataViewElement(modalMessage)" class="ml-5 pl-5 hover-efect cian add-new-dataview" > <i class="fa fa-plus"></i> Add New</a>
+            
         </div> 
     </div>
     <div class="col-md-3 border-end d-flex"> 

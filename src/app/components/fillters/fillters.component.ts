@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { Output, EventEmitter } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-filters',
@@ -14,7 +15,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class FilltersComponent implements OnInit {
 
-  //Todo::outpots to filters.
   @Output() filtersEvent = new EventEmitter<any>();
 
   @ViewChild('modalMensaje') modal: ElementRef;
@@ -60,6 +60,7 @@ export class FilltersComponent implements OnInit {
   }
 
   aplyFilters() :void{
+    
     if(this.saveFilters){
         if(this.dataViewName == ""){
            this._snackBar.open("Data view name is requiered", 'Info',{
@@ -172,13 +173,38 @@ export class FilltersComponent implements OnInit {
       this.filtersPrincipal.jobSite = "";
       this.filtered = false;
     }
-
     this.changeValueFilter();
   }
 
-  trashDataView():void{
+  //Trash a row in the list "data views"
+  trashDataView(name):void{
     this.filtersPrincipal.myDataView = "";
-    alert("seguro de eliminar?");
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want delete this option?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const filterData = this.dataViews.filter( r => r.name != name);
+        this.dataViews = filterData;
+        this.clearFilter();
+        Swal.fire(
+          'Deleted!',
+          'the option was delete.',
+          'success'
+        )
+      
+      } 
+    })
   }
+
+  newDataViewElement(modal):void{
+    this.saveFilters = true;
+    this.openModal(modal);
+  }
+
 
 }
