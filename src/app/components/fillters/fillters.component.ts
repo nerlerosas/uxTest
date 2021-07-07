@@ -119,10 +119,8 @@ export class FilltersComponent implements OnInit {
     this.modalService.dismissAll();
     this.checkFilters();
   }
-  
-  addQuantity() :void{
-    this.filters.quantity++;
-  }
+
+  addQuantity = (): number => this.filters.quantity++;
 
   minusQuantity() :void{
     if(this.filters.quantity == 0)
