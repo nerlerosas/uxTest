@@ -49,16 +49,15 @@ export class FilltersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let local =  localStorage.getItem('myDataViews');
+    if(local)
+      this.dataViews = JSON.parse(local);
   }
 
-  changeValueFilter() {
-    this.filtersEvent.emit(this.filters);
-  }
-
-  openModal(modal) :void {
-    this.modalService.open(modal, { size: 'lg'});
-  }
-
+  changeValueFilter = () => this.filtersEvent.emit(this.filters)
+  
+  openModal = (modal) =>  this.modalService.open(modal, { size: 'lg'})
+  
   aplyFilters() :void{
     
     if(this.saveFilters){
@@ -71,6 +70,10 @@ export class FilltersComponent implements OnInit {
       
       const newDataView = { name : this.dataViewName, filters : {...this.filters} };
       this.dataViews.push(newDataView);
+
+      localStorage.setItem('myDataViews', JSON.stringify(this.dataViews));
+      
+
       this.saveFilters = false;
       this.dataViewName = '';
     }
@@ -188,6 +191,7 @@ export class FilltersComponent implements OnInit {
       if (result.isConfirmed) {
         const filterData = this.dataViews.filter( r => r.name != name);
         this.dataViews = filterData;
+        localStorage.setItem('myDataViews', JSON.stringify(this.dataViews));
         this.clearFilter();
         Swal.fire(
           'Deleted!',
